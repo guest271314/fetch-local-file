@@ -18,6 +18,21 @@ Pass the path to the directory of the unpacked extension as first parameter, and
 
 The result of the asynchronous function will either be the file as a `Uint8Array` or the error message from `fetch()`.
 
+## Installation
+
+### Manual
+
+1. Navigate to `chrome://extensions`.
+2. Toggle `Developer mode`.
+3. Click `Load unpacked`.
+4. Select `fetch-local-file` folder.
+
+### Programmatic
+
+```
+chrome --load-extension=/absolute/path/to/fetch-local-file
+```
+
 ## License
 
 Do What the Fuck You Want to Public License [WTFPLv2](http://www.wtfpl.net/about/)
