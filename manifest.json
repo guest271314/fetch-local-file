@@ -1,0 +1,32 @@
+{
+  "name": "fetch-local-file",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Fetch local file from arbitrary Web pages using a Web extension",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "windows",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "chrome://*/*",
+    "file://*/*",
+    "*://*/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://*/*"
+    ],
+    "ids": [
+      "*"
+    ]
+  },
+  "action": {},
+  "homepage_url": "https://github.com/guest271314/fetch-local-file"
+}
