@@ -61,6 +61,17 @@ async function handleInstallEvent() {
   Object.assign(globalThis, { extensionPath });
 }
 
+async function handleTabUpdate(tabId, { title, url }, tab)  {
+  await chrome.scripting.executeScript({
+    target: {
+      tabId,
+    },
+    world: "MAIN",
+    files: ["fetch-local-file.js"],
+  });
+}
+
+chrome.tabs.onUpdated.addListener(handleTabUpdate);
 chrome.runtime.onInstalled.addListener(handleInstallEvent);
 chrome.action.onClicked.addListener(() => chrome.runtime.reload());
 chrome.runtime.onMessageExternal.addListener(handleMessageEvent);
