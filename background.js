@@ -64,13 +64,15 @@ async function handleInstallEvent() {
 async function handleTab() {
   const tabs = await chrome.tabs.query({ url: ["http://*/*", "https://*/*"] });
   for (const tab of tabs) {
-    await chrome.scripting.executeScript({
-      target: {
-        tabId: tab.id,
-      },
-      world: "MAIN",
-      files: ["fetch-local-file.js"],
-    });
+    if (!tab?.url.startsWith("chrome")) {
+      await chrome.scripting.executeScript({
+        target: {
+          tabId: tab.id,
+        },
+        world: "MAIN",
+        files: ["fetch-local-file.js"],
+      });
+    }
   }
 }
 
